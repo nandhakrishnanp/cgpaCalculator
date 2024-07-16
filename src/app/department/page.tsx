@@ -14,7 +14,7 @@ const page = () => {
 
            {DepartmentsList&&DepartmentsList.map((item,index)=>
            (
-            <Link  href={`/department/${item.id}`}>
+            <Link key={index} href={`/department/${item.id}`}>
             <div className=' bg-gray-800 p-4 rounded-lg hover:cursor-pointer hover:scale-105 transition-all '>
                  <p className=' text-white '>{index+1} . {item.name}</p>
             </div>
