@@ -6,7 +6,8 @@ export const connectDb = async () => {
         console.log("Already connected to MongoDB");
         return;
     }
-    await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB, { dbName:"AidConnect"});
+    let MongoDBUrl:any = process.env.NEXT_PUBLIC_MONGODB
+    await mongoose.connect(MongoDBUrl, { dbName:"AidConnect"});
     console.log("Connected to MongoDB");
     
   } catch (error) {
