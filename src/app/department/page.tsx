@@ -5,7 +5,7 @@ import { fetchalldepartment } from '../actions/adddepartment'
 
 const page = async () => {
  
-  const DepartmentsList = await fetchalldepartment()
+  const DepartmentsList:any = await fetchalldepartment()
   return (
     <div >
        <div className=' min-h-screen overflow-y-scroll flex flex-col items-center justify-center' >
@@ -16,7 +16,7 @@ const page = async () => {
        <section className=' my-6'>
         <Suspense fallback={"loading.."} >
 
-           {DepartmentsList&&DepartmentsList.map((item,index)=>
+           {DepartmentsList&&DepartmentsList.map((item:any,index:number)=>
            (
             <Link className='m-2' key={index} href={`/department/${item.id}`}>
             <div className=' bg-gray-800 p-4 rounded-lg hover:cursor-pointer hover:scale-105 transition-all '>
