@@ -26,7 +26,7 @@ const Page = () => {
           Make sure the Credit details are valid⚡
         </p>
       </header>
-      <section className=" flex flex-col items-center justify-center">
+      <section className=" max-md:m-5 flex flex-col items-center justify-center">
         <form
           onSubmit={(e) => e.preventDefault()}
           className=" flex flex-col items-center justify-center"
@@ -63,8 +63,8 @@ const Page = () => {
             className="ring-2 ring-black h-10 rounded-lg my-2 px-3"
           />
           {department[0].subjects.map((item, index) => (
-            <div key={index} className="flex gap-4 items-center justify-center">
-              <p>{index + 1}.</p>
+            <div key={index} className="flex max-md:flex-col  gap-4 items-center justify-center">
+              <p >{index + 1}.</p>
               <input
                 required
                 onChange={(e) => {
