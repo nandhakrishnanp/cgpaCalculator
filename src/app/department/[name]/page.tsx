@@ -1,27 +1,31 @@
-import { SubjectList } from '@/Components/SubjectList'
-import { DepartmentsList } from '@/Constants'
-import React from 'react'
 
-const page = async({params}:{
-    params:{
-        name:string
-    }
+
+import { SubjectList } from "@/Components/SubjectList";
+
+
+import React, { Suspense } from "react";
+import { fetchdepartmentById } from "@/app/actions/adddepartment";
+
+const page = async ({
+  params,
+}: {
+  params: {
+    name: string;
+  };
 }) => {
-
-   const filtered = DepartmentsList.filter((item)=>item.id===params.name)
+  const filtered = await fetchdepartmentById(params.name);
   return (
-    <div className='  '>
-        <h1 className=' text-center p-3 text-3xl font-bold '>{
-            filtered[0].name
-        }</h1>
-       
-        <div  className=' flex min-h-[80vh] flex-col items-center justify-center'>
-            <SubjectList filtered={filtered} />
-          
+    <div className="  ">
+        <Suspense fallback="loadin...">
 
-                </div>
+      <h1 className=" text-center p-3 text-3xl font-bold ">{filtered.name}</h1>
+
+      <div className=" flex min-h-[80vh] flex-col items-center justify-center">
+        {filtered ? <SubjectList filtered={JSON.stringify(filtered)} />: null}
+      </div>
+        </Suspense>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
