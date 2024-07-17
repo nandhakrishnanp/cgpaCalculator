@@ -2,7 +2,7 @@
 import { addDepartment } from "@/app/actions/adddepartment";
 import React, { useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [department, setDepartment] = useState([
     {
       name: "",
@@ -120,4 +120,4 @@ const page = () => {
     </main>
   );
 };
-export default page;
+export default Page;
