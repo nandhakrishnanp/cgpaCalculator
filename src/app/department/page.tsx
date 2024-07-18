@@ -2,19 +2,20 @@ import React, { Suspense } from 'react'
 // import {DepartmentsList} from "@/Constants/index"
 import Link from 'next/link'
 import { fetchalldepartment } from '../actions/adddepartment'
+import Fallback from '@/Components/Fallback'
 
 const page = async () => {
  
   const DepartmentsList:any = await fetchalldepartment()
   return (
     <div >
+        <Suspense fallback={<Fallback/>} >
        <div className=' min-h-screen overflow-y-scroll flex flex-col items-center justify-center' >
        <h1 className='  text-center font-bold max-md:text-3xl text-6xl'>
            Select Your Department
           </h1>
           <p className=' text-xl px-2 text-center font-serif'>If your Department Not Available pls Share your Subjects Credit Details Below ⚡</p>
        <section className=' my-6'>
-        <Suspense fallback={"loading.."} >
 
            {DepartmentsList&&DepartmentsList.map((item:any,index:number)=>
            (
@@ -24,7 +25,6 @@ const page = async () => {
             </div>
             </Link>
            ))}
-        </Suspense>
        </section>
        
        <Link href={"/department/newdepartment"}>
@@ -32,6 +32,7 @@ const page = async () => {
        </Link>
        <p> credits will be given for the Contributor</p>
        </div>
+        </Suspense>
     </div>
   )
 }

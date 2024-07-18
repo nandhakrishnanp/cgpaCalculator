@@ -1,8 +1,11 @@
 "use client";
 import { addDepartment } from "@/app/actions/adddepartment";
+import { useRouter } from "next/navigation";
+
 import React, { useState } from "react";
 
 const Page = () => {
+ const router =useRouter()
   const [department, setDepartment] = useState([
     {
       name: "",
@@ -109,6 +112,10 @@ const Page = () => {
               console.log(department);
 
               addDepartment(department);
+             setTimeout(() => {
+               router.push("/department")
+             }, 2000);
+
             }}
             type="submit"
             className=" bg-black text-lg hover:scale-105 transition-all duration-150 text-white py-1 m-2 px-3 rounded-full"

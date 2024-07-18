@@ -1,6 +1,8 @@
 "use server";
 import mongoose from "mongoose";
+
 import { connectDb } from "../util/database";
+import { revalidatePath } from "next/cache";
 const departmentSchema = new mongoose.Schema({
   name: String,
   id: String,
@@ -22,6 +24,8 @@ export const addDepartment = async (departmentdata: any) => {
 
     const newDepartment = await new Department(departmentdata[0]);
     await newDepartment.save();
+    revalidatePath("/department")
+
   } catch (error: unknown) {
     console.log(error);
 
