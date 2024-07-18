@@ -10,6 +10,7 @@ const page = async () => {
   return (
     <div >
         <Suspense fallback={<Fallback/>} >
+        
        <div className=' min-h-screen overflow-y-scroll flex flex-col items-center justify-center' >
        <h1 className='  text-center font-bold max-md:text-3xl text-6xl'>
            Select Your Department
