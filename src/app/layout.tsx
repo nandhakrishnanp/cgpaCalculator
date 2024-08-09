@@ -23,13 +23,13 @@ export default function RootLayout({
       <Script async src="https://www.googletagmanager.com/gtag/js?id=G-EN5PQ4SJEC"></Script>
 <Script  id='' strategy='lazyOnload'>
   {
-    
-    ' window.dataLayer = window.dataLayer || [];
+    `
+     window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
     
       gtag('config', 'G-EN5PQ4SJEC');
-      '
+      `
     
   }
 </Script>
