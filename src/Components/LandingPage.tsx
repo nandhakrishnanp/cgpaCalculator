@@ -1,13 +1,24 @@
 "use client";
 
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useState } from 'react'
 
 
 const LandingPage = () => {
+  const [isLoading , setIsLoading] =useState(false)
     const router = useRouter()
   return (
     <div className='mx-7'>
+         {
+          isLoading&&(
+            <div className=' absolute z-20 w-full h-screen flex flex-col items-center justify-center backdrop-blur-md'>
+             
+                <p className=' text-xl  text-white  font-mono font-bold animate-pulse '>
+                  Connecting to db ...
+                </p>
+            </div>
+          )
+         }
         <section className='flex flex-col my-6 min-h-screen items-center justify-center'>
 
           <h1 className='  text-center font-bold max-md:text-3xl text-6xl'>
@@ -16,6 +27,7 @@ const LandingPage = () => {
           <p className=' text-center text-xl font-serif'>Calculate your Grade Points on Few Clicks ⚡</p>
 
           <button onClick={()=>{
+            setIsLoading(true)
             router.push('/department')
           }} className=' bg-black text-xl font-serif hover:scale-105 transition-all duration-150 text-white py-1 m-2 px-2 rounded-full'>Check Now</button>
           <div className=' max-md:gap-2 max-md:m-6 max-md:flex-col text-center max-md:my-9 my-4 max-w-[800px]  flex items-center justify-center gap-5'>
