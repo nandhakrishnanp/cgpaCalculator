@@ -1,5 +1,6 @@
 "use client";
 import { addDepartment } from "@/app/actions/adddepartment";
+import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
 
 import React, { useState } from "react";
@@ -110,11 +111,15 @@ const Page = () => {
           <button
             onClick={() => {
               console.log(department);
+                 if(department[0].subjects.at(-1)?.name!="" && department[0].subjects.at(-1)?.credits!=""){
 
-              addDepartment(department);
-             setTimeout(() => {
-               router.push("/department")
-             }, 2000);
+                   addDepartment(department);
+                   router.push("/department")
+                 
+                 }
+                 else{
+                  alert("Please fill all the details")
+                 }
 
             }}
             type="submit"

@@ -141,8 +141,8 @@ export const SubjectList = ({ filtered }: any) => {
             Reset
           </button>
 
-          <a href="https://www.linkedin.com/in/nandhakrishnanp/">
-      <p className=" rounded-xl text-center p-1 underline text-white bg-black w-full"> connect with me For more intersting Projects  ❤️  </p></a>
+          <a className=" absolute bottom-0 " href="https://www.linkedin.com/in/nandhakrishnanp/">
+      <p className=" rounded-xl text-center p-1 underline text-white bg-black w-full"> connect with me For more intersting Projects  ❤️ Nandhakrishnan  </p></a>
      
         </div>
       )}

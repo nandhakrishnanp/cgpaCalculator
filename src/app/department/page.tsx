@@ -31,7 +31,7 @@ const page = async () => {
        <Link href={"/department/newdepartment"}>
        <button  className='  text-lg text-black underline hover:scale-105 transition-all duration-150 py-3 m-2 px-2 rounded-full'>Add Your Department</button>
        </Link>
-       <p> credits will be given for the Contributor</p>
+      
        </div>
         </Suspense>
     </div>
