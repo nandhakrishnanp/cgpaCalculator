@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Confetti from 'react-confetti'
 
 export const SubjectList = ({ filtered }: any) => {
     const filtered1 = JSON.parse(filtered)
@@ -124,10 +125,17 @@ export const SubjectList = ({ filtered }: any) => {
         </>
       ) : (
         <div>
-          <h1 className=" text-3xl px-3">
+
+          <h1 className=" text-3xl text-center px-3">
             Your Cummulative grade point is <b>{cgpa.toFixed(2)}</b> ⚡❤️‍🔥
           </h1>
-          <p className="px-3">{getCGPAMessage(cgpa)}</p>
+          <Confetti
+      width={2500}
+      height={700}
+      className=" overflow-y-hidden"
+      tweenDuration={2000}
+    />
+          <p className="px-3 text-center">{getCGPAMessage(cgpa)}</p>
           {/* <p>Cummulative Grade Point Average (CGPA) is <b>{(cgpa/2).toFixed(2)}</b></p> */}
           <button
             onClick={() => {
