@@ -132,7 +132,8 @@ export const SubjectList = ({ filtered }: any) => {
           <Confetti
       width={2500}
       height={700}
-      className=" overflow-y-hidden"
+
+      className=" w-screen h-screen overflow-y-hidden"
       tweenDuration={2000}
     />
           <p className="px-3 text-center">{getCGPAMessage(cgpa)}</p>
