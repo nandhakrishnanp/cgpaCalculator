@@ -13,8 +13,8 @@ const LandingPage = () => {
           isLoading&&(
             <div className=' absolute z-20 w-full h-screen flex flex-col items-center justify-center backdrop-blur-md'>
              
-                <p className=' text-xl  text-white  font-mono font-bold animate-pulse '>
-                  Connecting to db ...
+                <p className=' text-xl  text-white  font-mono font-bold  '>
+                  Loading..
                 </p>
             </div>
           )

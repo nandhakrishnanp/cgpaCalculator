@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Confetti from 'react-confetti'
+import Confetti from "react-confetti";
 
 export const SubjectList = ({ filtered }: any) => {
-    const filtered1 = JSON.parse(filtered)
-    
-    
+  const filtered1 = JSON.parse(filtered);
+
   const subjectArray = filtered1.subjects;
   const creditArray = subjectArray.map((item: any) => {
     return {
@@ -36,15 +35,19 @@ export const SubjectList = ({ filtered }: any) => {
       } else if (item.grade === "C") {
         totalPoints += 5 * item.credits;
       } else {
-        totalCredits = -1;
+        totalPoints = -999;
+
         return false;
       }
       totalCredits += item.credits;
       return true;
     });
-    if (!totalPoints) {
-      alert("Please Enter Valid Grades");
+    if (totalPoints<0) {
+      alert("Please Enter Valid Grades ");
       setIndex(0);
+      setCredits(creditArray);
+      setCgpa(0);
+
       setIsGenerated(false);
     } else {
       const cgpa = totalPoints / totalCredits;
@@ -110,11 +113,12 @@ export const SubjectList = ({ filtered }: any) => {
               <button
                 disabled={!credits[index].grade}
                 onClick={() => {
-                  if (index < credits.length - 1) {
-                    setIndex(index + 1);
-                  } else {
-                    handleCalculate();
-                  }
+                  if (credits[index].grade)
+                    if (index < credits.length - 1) {
+                      setIndex(index + 1);
+                    } else {
+                      handleCalculate();
+                    }
                 }}
                 className=" bg-black text-lg  hover:scale-105 transition-all duration-150 text-white py-1 m-2 px-3 rounded-full"
               >
@@ -125,17 +129,15 @@ export const SubjectList = ({ filtered }: any) => {
         </>
       ) : (
         <div>
-
           <h1 className=" text-3xl text-center px-3">
             Your Cummulative grade point is <b>{cgpa.toFixed(2)}</b> ⚡❤️‍🔥
           </h1>
           <Confetti
-      width={2500}
-      height={700}
-
-      className=" w-screen h-screen overflow-y-hidden"
-      tweenDuration={2000}
-    />
+            width={2500}
+            height={700}
+            className=" w-screen h-screen overflow-y-hidden"
+            tweenDuration={2000}
+          />
           <p className="px-3 text-center">{getCGPAMessage(cgpa)}</p>
           {/* <p>Cummulative Grade Point Average (CGPA) is <b>{(cgpa/2).toFixed(2)}</b></p> */}
           <button
@@ -150,9 +152,15 @@ export const SubjectList = ({ filtered }: any) => {
             Reset
           </button>
 
-          <a className=" absolute bottom-0 " href="https://www.linkedin.com/in/nandhakrishnanp/">
-      <p className=" rounded-xl text-center p-1 underline text-white bg-black w-full"> connect with me For more intersting Projects  ❤️ Nandhakrishnan  </p></a>
-     
+          <a
+            className=" absolute bottom-0 "
+            href="https://www.linkedin.com/in/nandhakrishnanp/"
+          >
+            <p className=" rounded-xl text-center p-1 underline text-white bg-black w-full">
+              {" "}
+              connect with me For more intersting Projects ❤️ Nandhakrishnan{" "}
+            </p>
+          </a>
         </div>
       )}
     </>
