@@ -21,6 +21,7 @@ export const SubjectList = ({ filtered }: any) => {
   const handleCalculate = () => {
     let totalCredits = 0;
     let totalPoints = 0;
+    let isCorect =true;
     credits.every((item: any) => {
       if (item.grade === "O") {
         totalPoints += 10 * item.credits;
@@ -35,25 +36,24 @@ export const SubjectList = ({ filtered }: any) => {
       } else if (item.grade === "C") {
         totalPoints += 5 * item.credits;
       } else {
-        totalPoints = -999;
-
+        alert("Please Enter Valid Grades ");
+        setIndex(0);
+        isCorect=false;
+        setCredits(creditArray);
+        setCgpa(0);
+        setIsGenerated(false);
         return false;
       }
       totalCredits += item.credits;
       return true;
     });
-    if (totalPoints<0) {
-      alert("Please Enter Valid Grades ");
-      setIndex(0);
-      setCredits(creditArray);
-      setCgpa(0);
+    if(isCorect){
 
-      setIsGenerated(false);
-    } else {
       const cgpa = totalPoints / totalCredits;
       setCgpa(cgpa);
       setIsGenerated(true);
     }
+  
   };
 
   function getCGPAMessage(cgpa: number) {

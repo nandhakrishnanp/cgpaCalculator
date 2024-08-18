@@ -30,15 +30,15 @@ const LandingPage = () => {
             setIsLoading(true)
             router.push('/department')
           }} className=' bg-black text-xl font-serif hover:scale-105 transition-all duration-150 text-white py-1 m-2 px-2 rounded-full'>Check Now</button>
-          <div className=' max-md:gap-2 max-md:m-2  text-center max-md:my-9 my-4 max-w-[800px]  flex items-center justify-center gap-5'>
+          <div className='    text-center  my-4 max-w-[800px]  flex items-center justify-center gap-5'>
 
-             <div className='flex  flex-col p-3  max-md:w-[90%] md:w-[450px] h-[150px]   items-center justify-evenly  rounded-md  bg-gray-800 '>
+             <div className='flex  flex-col p-3 w-[40%]  h-[150px]   items-center justify-evenly  rounded-md  bg-gray-800 '>
                 <h1 className=' text-white font-bold '>1.Select Your Department</h1>
                 <p className='text-white max-md:text-xs p-1 font-serif' >
                     Choose your department from the list .
                 </p>
              </div>
-             <div className='flex flex-col p-3  max-md:w-[90%]  rounded-md w-[450px] h-[150px]  items-center justify-evenly  bg-gray-800 '>
+             <div className='flex flex-col p-3   rounded-md w-[40%] h-[150px]  items-center justify-evenly  bg-gray-800 '>
                 <h1 className=' text-white font-bold '>2.Fill Out the Score </h1>
                 <p className='text-white  max-md:text-xs font-serif' >
 
@@ -46,7 +46,7 @@ const LandingPage = () => {
 
                 </p>
              </div>
-             <div className='flex flex-col p-3 max-md:w-[90%]  rounded-md w-[450px] h-[150px]  items-center justify-evenly bg-gray-800 '>
+             <div className='flex flex-col p-3  rounded-md w-[40%] h-[150px]  items-center justify-evenly bg-gray-800 '>
                 <h1 className=' text-white font-bold '>3. Hit Calculate
                 </h1>
                 <p className='text-white max-md:text-xs font-serif' >
