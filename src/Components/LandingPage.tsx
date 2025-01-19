@@ -22,7 +22,7 @@ const LandingPage = () => {
         <section className='flex flex-col my-6 min-h-screen items-center justify-center'>
 
           <h1 className='  text-center font-bold max-md:text-3xl text-6xl'>
-            Welcome to the CGPA Calculator
+            Welcome to the CGP Calculator
           </h1>
           <p className=' text-center text-xl font-serif'>Calculate your Grade Points on Few Clicks ⚡</p>
 
