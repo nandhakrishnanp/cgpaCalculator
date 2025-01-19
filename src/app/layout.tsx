@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "CGPA Calculator",
-  description: "Ggpas calculator for students",
+  description: "Collaborative CGPA Calculator BY Nandhakrishnan",
 };
 
 export default function RootLayout({
