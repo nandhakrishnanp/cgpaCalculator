@@ -21,8 +21,9 @@ const page = async () => {
            {DepartmentsList&&DepartmentsList.map((item:any,index:number)=>
            (
             <Link className='m-2' key={index} href={`/department/${item.id}`}>
-            <div className=' bg-gray-800 p-4 rounded-lg hover:cursor-pointer hover:scale-105 transition-all '>
+            <div className=' bg-gray-800 flex gap-1 p-4 rounded-lg hover:cursor-pointer hover:scale-105 transition-all '>
                  <p className=' text-white '>{index+1} . {item.name}</p>
+                 <p  className=' text-gray-300/90 '> - {item.id}</p>
             </div>
             </Link>
            ))}
