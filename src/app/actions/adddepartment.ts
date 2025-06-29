@@ -12,6 +12,10 @@ const departmentSchema = new mongoose.Schema({
       credits: Number,
     },
   ],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Department =
@@ -36,7 +40,9 @@ export const addDepartment = async (departmentdata: any) => {
 export const fetchalldepartment = async () => {
   try {
     await connectDb();
-    const response = await Department.find();
+    const response = await Department.find().sort({
+      createdAt: -1,
+    });
     console.log(response);
 
     return response;
