@@ -40,7 +40,7 @@ const page = async () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {DepartmentsList.map((item: any, index: number) => (
                                       
-                                            <div className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-black transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                            <div key={index} className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-black transition-all duration-300 hover:scale-105 hover:shadow-lg">
                                                 <div className="flex items-center justify-between mb-4">
                                                     <span className="inline-flex items-center justify-center w-8 h-8 bg-black text-white rounded-full text-sm font-semibold">
                                                         {index + 1}
