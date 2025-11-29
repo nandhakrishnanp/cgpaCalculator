@@ -27,6 +27,7 @@ const Page = () => {
     if (lastSubject?.name !== "" && lastSubject?.credits !== "") {
       setIsSubmitting(true);
       try {
+        department[0].id = `${department[0].name}${Date.now()}`;
         await addDepartment(department);
         router.push("/department");
       } catch (error) {
@@ -86,31 +87,6 @@ const Page = () => {
                     value={department[0].name}
                     type="text"
                     placeholder="e.g., CSE 3-Sem"
-                    className="w-full h-12 px-4 text-gray-900 placeholder-gray-500 bg-gray-50 border-2 border-gray-300 rounded-xl focus:border-gray-900 focus:bg-white focus:outline-none transition-all duration-200 hover:border-gray-400"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                    Department ID
-                  </label>
-                  <input
-                    required
-                    onChange={(e) => {
-                      let val = e.target.value;
-                      const temp = [...department];
-                      let newdepid = "";
-                      for (let i = 0; i < e.target.value.length; i++) {
-                        if (val[i] !== " ") {
-                          newdepid += val[i];
-                        }
-                      }
-                      temp[0].id = newdepid;
-                      setDepartment(temp);
-                    }}
-                    value={department[0].id}
-                    type="text"
-                    placeholder="e.g., 23cse"
                     className="w-full h-12 px-4 text-gray-900 placeholder-gray-500 bg-gray-50 border-2 border-gray-300 rounded-xl focus:border-gray-900 focus:bg-white focus:outline-none transition-all duration-200 hover:border-gray-400"
                   />
                 </div>
