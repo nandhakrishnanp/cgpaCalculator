@@ -27,7 +27,7 @@ const Page = () => {
     if (lastSubject?.name !== "" && lastSubject?.credits !== "") {
       setIsSubmitting(true);
       try {
-        department[0].id = `${department[0].name}${Date.now()}`;
+        department[0].id = `${Date.now()}`;
         await addDepartment(department);
         router.push("/department");
       } catch (error) {

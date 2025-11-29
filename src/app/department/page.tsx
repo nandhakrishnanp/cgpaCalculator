@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import Link from 'next/link'
 import { fetchalldepartment } from '../actions/adddepartment'
 import Fallback from '@/Components/Fallback'
+import CopyComponent from '@/Components/CopyComponent'
 
 const page = async () => {
     const DepartmentsList: any = await fetchalldepartment()
@@ -47,7 +48,10 @@ const page = async () => {
                                                     </span>
                                                     <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
                                                         ID: {item.id}
-                                                    </span>
+                                                    </span> 
+                                                    <CopyComponent
+                                                     id={item.id}
+                                                    />
                                                 </div>
                                                 
                                                 <h3 className="text-xl font-semibold text-black mb-2 group-hover:text-gray-700 transition-colors">
@@ -72,6 +76,7 @@ const page = async () => {
                                                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                                                     </svg>
+                                                    
                                                     <span>Calculate CGPA</span>
                                                     <svg className="w-4 h-4 ml-auto group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
