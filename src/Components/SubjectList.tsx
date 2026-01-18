@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
+import { GradeSelector } from "./GradeSelector";
 
 export const SubjectList = ({ filtered }: any) => {
   const filtered1 = JSON.parse(filtered);
@@ -21,7 +22,7 @@ export const SubjectList = ({ filtered }: any) => {
   const handleCalculate = () => {
     let totalCredits = 0;
     let totalPoints = 0;
-    let isCorect =true;
+    let isCorect = true;
     credits.every((item: any) => {
       if (item.grade === "O") {
         totalPoints += 10 * item.credits;
@@ -33,12 +34,14 @@ export const SubjectList = ({ filtered }: any) => {
         totalPoints += 7 * item.credits;
       } else if (item.grade === "B") {
         totalPoints += 6 * item.credits;
+      } else if (item.grade === "C+") {
+        totalPoints += 5.5 * item.credits;
       } else if (item.grade === "C") {
         totalPoints += 5 * item.credits;
       } else {
-        alert("Please Enter Valid Grades ");
+        alert("Please Select a Valid Grade");
         setIndex(0);
-        isCorect=false;
+        isCorect = false;
         setCredits(creditArray);
         setCgpa(0);
         setIsGenerated(false);
@@ -47,13 +50,11 @@ export const SubjectList = ({ filtered }: any) => {
       totalCredits += item.credits;
       return true;
     });
-    if(isCorect){
-
+    if (isCorect) {
       const cgpa = totalPoints / totalCredits;
       setCgpa(cgpa);
       setIsGenerated(true);
     }
-  
   };
 
   function getCGPAMessage(cgpa: number) {
@@ -86,18 +87,22 @@ export const SubjectList = ({ filtered }: any) => {
             <p className=" text-center px-3 ">
               {credits[index].credits} Credits
             </p>
-            <input
-              required
-              onChange={(e) => {
+            <GradeSelector
+              onGradeSelect={(grade) => {
                 const temp = [...credits];
-                temp[index].grade = e.target.value.toUpperCase();
+                temp[index].grade = grade;
                 setCredits(temp);
-                console.log(credits);
+
+                // Move to next subject or calculate
+                if (index < credits.length - 1) {
+                  setIndex(index + 1);
+                } else {
+                  // Calculate after selecting grade for last subject
+                  setTimeout(() => {
+                    handleCalculate();
+                  }, 100);
+                }
               }}
-              value={credits[index].grade}
-              type="text"
-              placeholder="Enter Grade eg: A , O "
-              className=" uppercase ring-2 ring-black h-10 rounded-lg my-2 px-3 "
             />
             <div className=" py-2">
               <button
@@ -108,21 +113,6 @@ export const SubjectList = ({ filtered }: any) => {
                 className=" bg-black text-lg hover:scale-105 transition-all duration-150 text-white py-1 m-2 px-3 rounded-full"
               >
                 Reset
-              </button>
-
-              <button
-                disabled={!credits[index].grade}
-                onClick={() => {
-                  if (credits[index].grade)
-                    if (index < credits.length - 1) {
-                      setIndex(index + 1);
-                    } else {
-                      handleCalculate();
-                    }
-                }}
-                className=" bg-black text-lg  hover:scale-105 transition-all duration-150 text-white py-1 m-2 px-3 rounded-full"
-              >
-                {index < credits.length - 1 ? "Next" : "Calculate"}
               </button>
             </div>
           </div>
@@ -158,7 +148,8 @@ export const SubjectList = ({ filtered }: any) => {
           >
             <p className=" rounded-xl text-center p-1 underline text-white bg-black w-full">
               {" "}
-              connect with me For more intersting Projects ❤️ Nandhakrishnan{" "}
+              connect with me For more intersting Projects ❤️
+              Nandhakrishnan{" "}
             </p>
           </a>
         </div>
