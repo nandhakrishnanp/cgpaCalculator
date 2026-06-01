@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 import { connectDb } from "../util/database";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 const departmentSchema = new mongoose.Schema({
   name: String,
   id: String,
@@ -82,6 +82,7 @@ export const fetchdepartmentById = async (id: string) => {
 
 export const getCalculationCount = async () => {
   try {
+    noStore();
     await connectDb();
     const counter = await Counter.findOne({ name: "departmentFetchCount" });
     return counter?.count ?? 0;
