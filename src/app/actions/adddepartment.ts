@@ -18,8 +18,22 @@ const departmentSchema = new mongoose.Schema({
   },
 });
 
+const counterSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    unique: true,
+  },
+  count: {
+    type: Number,
+    default: 0,
+  },
+});
+
 const Department =
   mongoose.models.Department || mongoose.model("Department", departmentSchema);
+
+const Counter =
+  mongoose.models.Counter || mongoose.model("Counter", counterSchema);
 
 export const addDepartment = async (departmentdata: any) => {
   try {
@@ -28,8 +42,7 @@ export const addDepartment = async (departmentdata: any) => {
 
     const newDepartment = await new Department(departmentdata[0]);
     await newDepartment.save();
-    revalidatePath("/department")
-
+    revalidatePath("/department");
   } catch (error: unknown) {
     console.log(error);
 
@@ -54,10 +67,25 @@ export const fetchalldepartment = async () => {
 export const fetchdepartmentById = async (id: string) => {
   try {
     await connectDb();
+    await Counter.findOneAndUpdate(
+      { name: "departmentFetchCount" },
+      { $inc: { count: 1 } },
+      { new: true, upsert: true },
+    );
     const response = await Department.findOne({ id: id });
 
     return response;
   } catch (error) {
     return error;
+  }
+};
+
+export const getCalculationCount = async () => {
+  try {
+    await connectDb();
+    const counter = await Counter.findOne({ name: "departmentFetchCount" });
+    return counter?.count ?? 0;
+  } catch (error) {
+    return 0;
   }
 };
