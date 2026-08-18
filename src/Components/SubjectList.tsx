@@ -58,17 +58,78 @@ export const SubjectList = ({ filtered }: any) => {
   };
 
   function getCGPAMessage(cgpa: number) {
-    if (cgpa >= 8) {
-      return "You're a genius! Did Einstein leave you his brain?";
-    } else if (cgpa >= 7) {
-      return "Great job! You're the superstar of the class!";
-    } else if (cgpa >= 6) {
-      return "Not bad! You're cruising along nicely.";
-    } else if (cgpa >= 5) {
-      return "You're getting there! Time to hit the books a bit more.";
-    } else {
-      return "Uh oh! Looks like it's time for a serious study session. Coffee, anyone?";
-    }
+    const genius = [
+      "You're a genius! Did Einstein leave you his brain?",
+      "Are you secretly a robot? Because your grades are unreal!",
+      "NASA called — they want you for their next mission!",
+      "Even your GPA is flexing on everyone else!",
+      "Plot twist: you're the main character of this movie!",
+      "Your brain runs on pure brilliance. No充电 needed!",
+      "They said impossible doesn't exist. You just proved it!",
+      "Your GPA has its own fan club now!",
+      "Somewhere, a professor is smiling because of you!",
+      "You didn't just pass — you absolutely dominated!",
+    ];
+
+    const great = [
+      "Great job! You're the superstar of the class!",
+      "You're like WiFi — everyone wants to be connected to your success!",
+      "Top tier vibes only! Keep slaying!",
+      "Your grades are the plot twist everyone loves!",
+      "You're proof that hard work pays off. Keep going!",
+      "Almost perfect — you're basically a legend in the making!",
+      "The library misses you, but your GPA thanks you!",
+      "You're one step closer to that 'proud parent' moment!",
+      "Success looks good on you — wear it well!",
+      "Your future self is already thanking you for this!",
+    ];
+
+    const good = [
+      "Not bad! You're cruising along nicely.",
+      "Solid work! You're the type who makes it look easy!",
+      "You're cooking something great — keep stirring!",
+      "This is what steady progress looks like. Love it!",
+      "You're not just passing — you're owning it!",
+      "Consistency is your superpower. Don't stop now!",
+      "You're the kind of student teachers brag about!",
+      "Great things take time, and you're right on track!",
+      "Your effort is showing — and it looks amazing!",
+      "Not everyone can do what you just did. Proud of you!",
+    ];
+
+    const average = [
+      "You're getting there! Time to hit the books a bit more.",
+      "The comeback is always stronger than the setback!",
+      "Every expert was once a beginner. You're on your way!",
+      "Your potential is through the roof — just believe it!",
+      "A little more push and you'll be unstoppable!",
+      "You've got the brain — now let's unlock its full power!",
+      "Remember, even bamboo takes time to grow. Keep going!",
+      "One step at a time. You're closer than you think!",
+      "The best investment you can make is in yourself!",
+      "You're not behind — you're just building momentum!",
+    ];
+
+    const low = [
+      "Hey, every champion has a rough round. This is your comeback arc!",
+      "Success isn't linear — you're just on a plot twist!",
+      "Even Rocky had to lose before he won. Keep fighting!",
+      "Your story isn't over — this is just chapter one!",
+      "Tough times don't last. Tough students do!",
+      "You've survived 100% of your worst days. You'll survive this!",
+      "Behind every成功 is a story of never giving up!",
+      "Your GPA doesn't define you. Your grit does!",
+      "This is the part where the hero rises. Ready?",
+      "The only failure is quitting. And you're still here!",
+    ];
+
+    const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
+
+    if (cgpa >= 8) return pick(genius);
+    else if (cgpa >= 7) return pick(great);
+    else if (cgpa >= 6) return pick(good);
+    else if (cgpa >= 5) return pick(average);
+    else return pick(low);
   }
 
   return (
